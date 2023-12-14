@@ -79,23 +79,23 @@ The baseline model's moderate performance can be attributed to several factors. 
 
 # Final Model
 
-## Addeed Features
+## Added Features
 
 In improving our model, we integrated additional nutritional features: "calories", "total_fat", "sugar", "sodium", "protein", "saturated_fat", and "carbohydrates" that were engineered in the data preprocessing step. These attributes were chosen based on the hypothesis that the nutritional composition of a recipe is linked to its preparation complexity and thus, the cooking time. For instance, recipes with higher protein content might involve cooking methods like baking or grilling that generally take longer. The inclusion of "calories" and various fat components (total, saturated) offers insights into the recipe's richness and possible preparation steps, like frying, which are time-influencing. Additionally, "sugar" and "sodium" levels can be indicative of certain types of food, such as a dessert or a main dish, that have specific time requirements. By incorporating these nutritional factors, we aimed to capture a more holistic view of each recipe, believing that these variables would improve the model's predictive power. 
 
 ## Improved Model
 
-In our research, both for the baseline and the enhanced model, we employed the Random Forest Regressor as our primary modeling algorithm. This choice was reiterated from the baseline model section, where its selection was based on its capability to effectively capture complex, nonlinear relationships in the data.
+In this research, both for the baseline and the enhanced model, we employed the Random Forest Regressor as our primary modeling algorithm. This choice was reiterated from the baseline model section, where its selection was based on its capability to effectively capture complex, nonlinear relationships in the data.
 
 ## Hyperparameter Selection
 
 When selecting values for the hyperparameter n_estimators, which represents the number of trees in the Random Forest, it's important to balance between computational efficiency which where we struggled the most and model accuracy. Here are three different values we've chosen for n_estimators and the reason behind each:
 
-1. 50 Trees: This is a relatively low number of trees. Choosing 50 as a starting point was beneficial for initial model training and quick iterations to pick the best performing features, especially when working with large datasets or when computational resources are limited. Fewer trees mean faster training, although it might not capture all the complexities of the data. This value is useful for establishing a baseline performance.
+1. **50 Trees:** This is a relatively low number of trees. Choosing 50 as a starting point was beneficial for initial model training and quick iterations to pick the best performing features, especially when working with large datasets or when computational resources are limited. Fewer trees mean faster training, although it might not capture all the complexities of the data. This value is useful for establishing a baseline performance.
 
-2. 100 Trees: This is a mid-range value that should provide a good balance between training time and model performance. With 100 trees, the model is likely to capture more nuances in the data than with 50 trees, leading to improved accuracy and generalization without excessively increasing the computational cost. This value can be practical choice for more refined modeling after initial tests.
+2. **100 Trees:** This is a mid-range value that should provide a good balance between training time and model performance. With 100 trees, the model is likely to capture more nuances in the data than with 50 trees, leading to improved accuracy and generalization without excessively increasing the computational cost. This value can be practical choice for more refined modeling after initial tests.
 
-3. 150 Trees: This is a relatively high number of trees, which can potentially lead to better model performance due to the increased decision trees. More trees can capture more patterns and reduce the risk of overfitting by averaging more decision paths. However, the trade-off is longer training times and higher computational demand. This value is suitable for final model tuning, especially when the initial results show promise and there's a need to squeeze out additional performance gains.
+3. **150 Trees:** This is a relatively high number of trees, which can potentially lead to better model performance due to the increased decision trees. More trees can capture more patterns and reduce the risk of overfitting by averaging more decision paths. However, the trade-off is longer training times and higher computational demand. This value is suitable for final model tuning, especially when the initial results show promise and there's a need to squeeze out additional performance gains.
 
 Overall, in the hyperparameter tuning, testing with 50, 100, and 150 trees revealed that 150 trees (n_estimators=150) yielded the best performance. This test was performed manually by fitting the model for all 3 cases seperately.
 
@@ -106,18 +106,20 @@ The Final Model's performance slightly improved over the Baseline Model, as evid
 **Baseline Model**
 
 MSE: 821.033
+
 R²: 0.189
 
 **Final Model**
 
 MSE: 798.356
+
 R²: 0.212
 
 The Baseline Model, which utilized a more limited set of features ('n_steps' and 'n_ingredients'), demonstrated a certain level of predictive ability but was constrained by the lack of data representation. In contrast, the Final Model incorporated a broader range of features, including nutritional values like 'calories', 'total_fat', 'sugar', 'sodium', 'protein', 'saturated_fat', and 'carbohydrates'. This inclusion of diverse and nutritionally relevant features allowed the Final Model to capture a more detailed picture of the recipes, leading to a more accurate prediction of cooking times.
 
 # Fairness Analysis
 
-The two groups selected for the fairness analysis are “Reasonable Recipes” and “Complex Recipes”
+The two groups selected for the fairness analysis are **“Reasonable Recipes”** and **“Complex Recipes”**
 
 1. Choice of group “Reasonable Recipes” involves the following specifications.
 	- Recipes with less than or equal to 180 minutes of cooking time.
